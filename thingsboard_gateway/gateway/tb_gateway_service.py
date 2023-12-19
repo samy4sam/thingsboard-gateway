@@ -790,7 +790,7 @@ class TBGatewayService:
                                 if connector_config["config"][config] is not None and len(connector_config["config"][config].keys()) > 2:
                                     connector_name = connector_config["name"]
 
-                                    if not self.available_connectors.get(connector_name):
+                                    if not self.available_connectors.get(connector_name) or not self.available_connectors[connector_name]._is_stopped:
                                         connector = self._implemented_connectors[connector_type](self,
                                                                                                  connector_config["config"][
                                                                                                      config],
